@@ -1,0 +1,312 @@
+openapi: "3.1.0"
+info:
+  title: "FestivalBackend"
+  version: "0.1.0"
+paths:
+  /auth/token/:
+    post:
+      tags:
+        - "auth"
+      summary: "Login"
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/LoginItem"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /auth/register/:
+    post:
+      tags:
+        - "auth"
+      summary: "Register"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterItem"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterUserResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /roles/:
+    post:
+      tags:
+        - "roles"
+      summary: "Create Role"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRoleItem"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateRoleResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /roles/{role_id}:
+    delete:
+      tags:
+        - "roles"
+      summary: "Delete Role"
+      parameters:
+        - name: "role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Role Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+components:
+  schemas:
+    BaseResponse:
+      properties:
+        error:
+          type: "boolean"
+          title: "Error"
+          default: "false"
+        code:
+          type: "integer"
+          title: "Code"
+          default: "0"
+        message:
+          type: "string"
+          title: "Message"
+          default: ""
+      type: "object"
+      title: "BaseResponse"
+    PaperSize:
+      type: "string"
+      enum:
+        - "A4"
+      const: "A4"
+      title: "PaperSize"
+    User:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        username:
+          type: "string"
+          title: "Username"
+        role_id:
+          type: "integer"
+          title: "Role Id"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+      type: "object"
+      "required":
+        - "id"
+        - "username"
+        - "role_id"
+        - "created_at"
+      title: "User"
+    LoginItem:
+      properties:
+        grant_type:
+          anyOf:
+            - type: "string"
+              pattern: "password"
+            - type: "null"
+          title: "Grant Type"
+        username:
+          type: "string"
+          title: "Username"
+        password:
+          type: "string"
+          title: "Password"
+        scope:
+          type: "string"
+          title: "Scope"
+          default: ""
+        client_id:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Client Id"
+        client_secret:
+          anyOf:
+            - type: "string"
+            - type: "null"
+          title: "Client Secret"
+      type: "object"
+      required:
+        - "username"
+        - "password"
+      title: "LoginItem"
+    LoginResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            access_token:
+              type: "string"
+              title: "Access Token"
+            token_type:
+              type: "string"
+              title: "Token Type"
+              default: "bearer"
+          required:
+            - "access_token"
+          title: "LoginResponse"
+    RegisterItem:
+      properties:
+        username:
+          type: "string"
+          title: "Username"
+        password:
+          type: "string"
+          title: "Password"
+        role_id:
+          type: "integer"
+          title: "Role Id"
+      type: "object"
+      required:
+        - "username"
+        - "password"
+        - "role_id"
+    RegisterUserResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            user:
+              $ref: "#/components/schemas/User"
+          required:
+            - "user"
+          title: "RegisterUserResponse"
+    Role:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "integer"
+          title: "Name"
+        permissions:
+          additionalProperties:
+            type: "boolean"
+          type: "object"
+          title: "Permissions"
+        paper_size:
+          anyOf:
+            - $ref: "#/components/schemas/PaperSize"
+            - type: "null"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "permissions"
+        - "paper_size"
+      title: "Role"
+    CreateRoleItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+    CreateRoleResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            role:
+              $ref: "#/components/schemas/Role"
+          required:
+            - "role"
+          title: "CreateRoleResponse"
