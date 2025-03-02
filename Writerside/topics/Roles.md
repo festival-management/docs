@@ -4,7 +4,7 @@ Il modello Role rappresenta un'entità che definisce un "ruolo" all'interno di u
 permessi specifici che determinano quali azioni un utente con tale ruolo può eseguire nel sistema. Inoltre, il modello 
 include un campo opzionale per la configurazione di una dimensione di carta predefinita.
 
-**Attributi del Modello `Role`**:
+## Attributi del Modello `Role`:
 ```python 
 class Role(BaseModel):
     id: int
@@ -21,7 +21,7 @@ class Role(BaseModel):
 - **paper_size**: un campo che specifica la dimensione della carta predefinita per il ruolo, necessario se il ruolo può
   compiere ordini (specifica il formato della carta di stampa).
 
-**Permessi**:
+## Permessi:
 ```python 
 class Permission(StrEnum):
     CAN_ADMINISTER = "can_administer"

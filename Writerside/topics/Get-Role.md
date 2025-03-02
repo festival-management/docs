@@ -1,11 +1,11 @@
-# Delete Role
+# Get Role
 
-Questo endpoint permette di eliminare un ruolo dal sistema. Per eliminare un ruolo, è necessario fornire l'ID del ruolo
-che si desidera rimuovere.
+Questo endpoint permette di ottenere tutte le informazioni riguardanti un ruolo (id, name, permessions, paper_size). Per
+ottenere le informazioni di un ruolo è necessario fornire l'ID del ruolo che si desidera ottenere.
 
 **Permission**: `can_administer`
 
-<api-endpoint openapi-path="./../openapi.yaml" endpoint="/roles/{role_id}" method="delete">
+<api-endpoint openapi-path="./../openapi.yaml" endpoint="/roles/{role_id}" method="get">
     <request>
         <sample lang="JSON" title="Payload">
             {
@@ -18,16 +18,16 @@ che si desidera rimuovere.
             {
                 "error": false,
                 "code": 0,
-                "message": ""
-            }
-        </sample>
-    </response>
-    <response type="401">
-        <sample lang="JSON">
-            {
-                "error": true,
-                "code": 401,
-                "message": ""
+                "message": "",
+                "id": 1,
+                "name": "abcde",
+                "permissions": {
+                    "can_administer": true,
+                    "can_order": false,
+                    "can_statistics": true,
+                    "can_priority_statistics": false
+                },
+                "paper_size": "A4"
             }
         </sample>
     </response>

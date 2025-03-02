@@ -111,6 +111,64 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "roles"
+      summary: "Get Roles"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "0"
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "null"
+            title: "Limit"
+        - name: "only_name"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Only Name"
+        - name: "can_order"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Can Order"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetRolesResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
   /roles/{role_id}:
     delete:
       tags:
@@ -123,6 +181,177 @@ paths:
           schema:
             type: "integer"
             title: "Role Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "roles"
+      summary: "Get Role"
+      parameters:
+        - name: "role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Role Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetRoleResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /roles/{role_id}/permissions:
+    put:
+      tags:
+        - "roles"
+      summary: "Update Role Permissions"
+      parameters:
+        - name: "role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Role Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateRolePermissionsItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /roles/{role_id}/name:
+    put:
+      tags:
+        - "roles"
+      summary: "Update Role Name"
+      parameters:
+        - name: "role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Role Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateRoleNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /roles/{role_id}/paper_size:
+    put:
+      tags:
+        - "roles"
+      summary: "Update Role Paper Size"
+      parameters:
+        - name: "role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Role Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateRolePaperSizeItem"
       responses:
         200:
           description: "Successful Response"
@@ -292,6 +521,19 @@ components:
         - "permissions"
         - "paper_size"
       title: "Role"
+    RoleName:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+      title: "RoleName"
     CreateRoleItem:
       properties:
         name:
@@ -310,3 +552,53 @@ components:
           required:
             - "role"
           title: "CreateRoleResponse"
+    GetRoleResponse:
+      allOf:
+        - $ref: "#/components/schemas/Role"
+    GetRolesResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            total_count:
+              type: "integer"
+              title: "Total Count"
+            roles:
+              type: "array"
+              items:
+                anyOf:
+                  - $ref: "#/components/schemas/Role"
+                  - $ref: "#/components/schemas/RoleName"
+              title: "Roles"
+          required:
+            - "total_count"
+            - "roles"
+          title: "GetRolesResponse"
+    UpdateRolePermissionsItem:
+      properties:
+        permissions:
+          additionalProperties:
+            type: "boolean"
+          type: "object"
+          title: "Permissions"
+      type: "object"
+      required:
+        - "permissions"
+      title: "UpdateRolePermissionsItem"
+    UpdateRoleNameItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+      title: "UpdateRoleNameItem"
+    UpdateRolePaperSizeItem:
+      properties:
+        paper_size:
+          "$ref": "#/components/schemas/PaperSize"
+      type: "object"
+      required:
+        - "paper_size"
+      title: "UpdateRolePaperSizeItem"

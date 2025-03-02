@@ -1,5 +1,11 @@
 # Create Role
 
+Questo endpoint permette di creare un nuovo ruolo all'interno del sistema. Per creare un ruolo, è necessario fornire 
+un nome. Eventuali parametri aggiuntivi (come permessi specifici) possono essere modificati successivamente utilizzando 
+i metodi PUT forniti.
+
+**Permission**: `can_administer`
+
 <api-endpoint openapi-path="./../openapi.yaml" endpoint="/roles/" method="post">
     <request>
         <sample lang="JSON" title="Payload">

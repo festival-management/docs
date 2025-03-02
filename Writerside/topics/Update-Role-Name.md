@@ -1,15 +1,16 @@
-# Delete Role
+# Update Role Name
 
-Questo endpoint permette di eliminare un ruolo dal sistema. Per eliminare un ruolo, è necessario fornire l'ID del ruolo
-che si desidera rimuovere.
+Questo endpoint permette di aggiornare il nome di uno specifico ruolo nel sistema. È necessario fornire l'ID del ruolo e
+il nuovo nome nel corpo della richiesta.
 
 **Permission**: `can_administer`
 
-<api-endpoint openapi-path="./../openapi.yaml" endpoint="/roles/{role_id}" method="delete">
+<api-endpoint openapi-path="./../openapi.yaml" endpoint="/roles/{role_id}/name" method="put">
     <request>
         <sample lang="JSON" title="Payload">
             {
-                "role_id": 1
+                "role_id": 1,
+                "name": "abcde"
             }
         </sample>
     </request>
@@ -36,6 +37,15 @@ che si desidera rimuovere.
             {
                 "error": true,
                 "code": 404,
+                "message": ""
+            }
+        </sample>
+    </response>
+    <response type="409">
+        <sample lang="JSON">
+            {
+                "error": true,
+                "code": 409,
                 "message": ""
             }
         </sample>
