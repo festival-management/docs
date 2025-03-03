@@ -1,6 +1,6 @@
 # Roles
 
-Il modello Role rappresenta un'entità che definisce un "ruolo" all'interno di un sistema. Questo ruolo è associato a 
+Il modello Role rappresenta un'entità che definisce un "ruolo" all'interno del sistema. Questo ruolo è associato a 
 permessi specifici che determinano quali azioni un utente con tale ruolo può eseguire nel sistema. Inoltre, il modello 
 include un campo opzionale per la configurazione di una dimensione di carta predefinita.
 

@@ -377,6 +377,271 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BaseResponse"
+  /users/{user_id}:
+    delete:
+      tags:
+        - "users"
+      summary: "Delete User"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "User Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "users"
+      summary: "Get User"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "User Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetUserResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /users/:
+    get:
+      tags:
+        - "users"
+      summary: "Get Users"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "0"
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "100"
+            title: "Limit"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetUsersResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /users/{user_id}/password:
+    put:
+      tags:
+        - "users"
+      summary: "Update User Password"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "User Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateUserPasswordItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /users/{user_id}/name:
+    put:
+      tags:
+        - "users"
+      summary: "Update User Name"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "User Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateUserNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /users/{user_id}/role:
+    put:
+      tags:
+        - "users"
+      summary: "Update User Role"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "User Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateUserRoleItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
 components:
   schemas:
     BaseResponse:
@@ -602,3 +867,52 @@ components:
       required:
         - "paper_size"
       title: "UpdateRolePaperSizeItem"
+    GetUserResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - $ref: "#/components/schemas/User"
+          title: "GetUserResponse"
+    GetUsersResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            total_count:
+              type: "integer"
+              title: "Total Count"
+            users:
+              items:
+                "$ref": "#/components/schemas/User"
+              type: "array"
+              title: "Users"
+          required:
+            - "total_count"
+            - "users"
+          title: "GetUsersResponse"
+    UpdateUserPasswordItem:
+      properties:
+        password:
+          type: "string"
+          title: "Password"
+      type: "object"
+      required:
+        - "password"
+      title: "UpdateUserPasswordItem"
+    UpdateUserNameItem:
+      properties:
+        username:
+          type: "string"
+          title: "Username"
+      type: "object"
+      required:
+        - "username"
+      title: "UpdateUserNameItem"
+    UpdateUserRoleItem:
+      properties:
+        role_id:
+          type: "integer"
+          title: "Role Id"
+      type: "object"
+      required:
+        - "role_id"
+      title: "UpdateUserRoleItem"

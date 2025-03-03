@@ -21,5 +21,13 @@
             <toc-element topic="Update-Role-Name.md"/>
             <toc-element topic="Update-Role-Paper-Size.md"/>
         </toc-element>
+        <toc-element topic="Users.md">
+            <toc-element topic="Delete-User.md"/>
+            <toc-element topic="Get-User.md"/>
+            <toc-element topic="Get-Users.md"/>
+            <toc-element topic="Update-User-Password.md"/>
+            <toc-element topic="Update-User-Name.md"/>
+            <toc-element topic="Update-User-Role.md"/>
+        </toc-element>
     </toc-element>
 </instance-profile>

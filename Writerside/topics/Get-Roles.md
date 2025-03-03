@@ -42,7 +42,14 @@ base alle loro caratteristiche:
                     },
                     {
                         "id": 2,
-                        "name": "abcdef"
+                        "name": "abcdef",
+                        "permissions": {
+                            "can_administer": true,
+                            "can_order": false,
+                            "can_statistics": true,
+                            "can_priority_statistics": false
+                        },
+                        "paper_size": "A4"
                     }
                 ]
             }
