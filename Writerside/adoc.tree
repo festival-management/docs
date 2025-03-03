@@ -29,5 +29,13 @@
             <toc-element topic="Update-User-Name.md"/>
             <toc-element topic="Update-User-Role.md"/>
         </toc-element>
+        <toc-element topic="Subcategories.md">
+            <toc-element topic="Create-Subcategory.md"/>
+            <toc-element topic="Delete-Subcategory.md"/>
+            <toc-element topic="Get-Subcategories.md"/>
+            <toc-element topic="Get-Subcategory.md"/>
+            <toc-element topic="Update-Subcategory-Name.md"/>
+            <toc-element topic="Update-Subcategory-Order.md"/>
+        </toc-element>
     </toc-element>
 </instance-profile>

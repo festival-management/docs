@@ -642,6 +642,242 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BaseResponse"
+  # Subcategories
+  /subcategories/:
+    post:
+      tags:
+        - "subcategories"
+      summary: "Create Subcategory"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/CreateSubcategoryItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateSubcategoryResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "subcategories"
+      summary: "Get Subcategories"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "0"
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: "false"
+          schema:
+            anyOf:
+              - type: "integer"
+              - type: "null"
+            title: "Limit"
+        - name: "only_name"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Only Name"
+        - name: "order_by"
+          in: "query"
+          required: "false"
+          schema:
+            type: "string"
+            title: "Order By"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetSubcategoriesResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /subcategories/{subcategory_id}:
+    delete:
+      tags:
+        - "subcategories"
+      summary: "Delete Subcategory"
+      parameters:
+        - name: "subcategory_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Subcategory Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "subcategories"
+      summary: "Get Subcategory"
+      parameters:
+        - name: "subcategory_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Subcategory Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetSubcategoryResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /subcategories/{subcategory_id}/name:
+    put:
+      tags:
+        - "subcategories"
+      summary: "Update Subcategory Name"
+      parameters:
+        - name: "subcategory_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Subcategory Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateSubcategoryNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /subcategories/{subcategory_id}/order:
+    put:
+      tags:
+        - "subcategories"
+      summary: "Update Subcategory Order"
+      parameters:
+        - name: "subcategory_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Subcategory Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UpdateSubcategoryOrderItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
 components:
   schemas:
     BaseResponse:
@@ -819,7 +1055,10 @@ components:
           title: "CreateRoleResponse"
     GetRoleResponse:
       allOf:
+        - $ref: "#/components/schemas/BaseResponse"
         - $ref: "#/components/schemas/Role"
+      type: "object"
+      title: "GetRoleResponse"
     GetRolesResponse:
       allOf:
         - $ref: "#/components/schemas/BaseResponse"
@@ -916,3 +1155,96 @@ components:
       required:
         - "role_id"
       title: "UpdateUserRoleItem"
+    # Subcategories
+    Subcategory:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        order:
+          type: "integer"
+          title: "Order"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "order"
+      title: "Subcategory"
+    SubcategoryName:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+      title: "SubcategoryName"
+    CreateSubcategoryItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+      title: "CreateSubcategoryItem"
+    CreateSubcategoryResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            subcategory:
+              "$ref": "#/components/schemas/Subcategory"
+          required:
+            - "subcategory"
+          title: "CreateSubcategoryResponse"
+    GetSubcategoriesResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            total_count:
+              type: "integer"
+              title: "Total Count"
+            subcategories:
+              items:
+                anyOf:
+                  - "$ref": "#/components/schemas/Subcategory"
+                  - "$ref": "#/components/schemas/SubcategoryName"
+              type: "array"
+              title: "Subcategories"
+          required:
+            - "total_count"
+            - "subcategories"
+          title: "GetSubcategoriesResponse"
+    GetSubcategoryResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - $ref: "#/components/schemas/Subcategory"
+      type: "object"
+      title: "GetSubcategoryResponse"
+    UpdateSubcategoryNameItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+      title: "UpdateSubcategoryNameItem"
+    UpdateSubcategoryOrderItem:
+      properties:
+        order:
+          type: "integer"
+          title: "Order"
+      type: "object"
+      required:
+        - "order"
+      title: "UpdateSubcategoryOrderItem"

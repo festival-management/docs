@@ -9,7 +9,7 @@ database, ma una volta autenticato, l'utente non invia più la password.
 
 ## Attributi del Modello `User`:
 ```python 
-class User(Model):
+class User(BaseModel):
     id: int
     username: str
     password: str
