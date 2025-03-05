@@ -1668,6 +1668,977 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BaseResponse"
+  # Menus
+  /menus/{menu_id}/date:
+    post:
+      tags:
+        - "menu"
+      summary: "Add Menu Date"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddMenuDateItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddMenuDateResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field:
+    post:
+      tags:
+        - "menu"
+      summary: "Add Menu Field"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddMenuFieldItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddMenuFieldResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}/product:
+    post:
+      tags:
+        - "menu"
+      summary: "Add Menu Field Product"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddMenuFieldProductItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddMenuFieldProductResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/role:
+    post:
+      tags:
+        - "menu"
+      summary: "Add Menu Role"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddMenuRoleItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddMenuRoleResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/:
+    post:
+      tags:
+        - "menu"
+      summary: "Create Menu"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateMenuItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateMenuResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "menu"
+      summary: "Get Menus"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "0"
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: "false"
+          schema:
+            anyOf:
+              - type: "integer"
+              - type: "null"
+            title: "Limit"
+        - name: "order_by"
+          in: "query"
+          required: "false"
+          schema:
+            type: "string"
+            title: "Order By"
+        - name: "include_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Dates"
+        - name: "include_fields"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields"
+        - name: "include_fields_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products"
+        - name: "include_fields_products_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Dates"
+        - name: "include_fields_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Ingredients"
+        - name: "include_fields_products_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Roles"
+        - name: "include_fields_products_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Variants"
+        - name: "include_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Roles"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetMenusResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}:
+    delete:
+      tags:
+        - "menu"
+      summary: "Delete Menu"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "menu"
+      summary: "Get Menu"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "include_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Dates"
+        - name: "include_fields"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields"
+        - name: "include_fields_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products"
+        - name: "include_fields_products_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Dates"
+        - name: "include_fields_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Ingredients"
+        - name: "include_fields_products_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Roles"
+        - name: "include_fields_products_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Fields Products Variants"
+        - name: "include_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Roles"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetMenuResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/date/{menu_date_id}:
+    delete:
+      tags:
+        - "menu"
+      summary: "Delete Menu Date"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_date_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Date Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}:
+    delete:
+      tags:
+        - "menu"
+      summary: "Delete Menu Field"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}/product/{menu_field_product_id}:
+    delete:
+      tags:
+        - "menu"
+      summary: "Delete Menu Field Product"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+        - name: "menu_field_product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Product Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/role/{menu_role_id}:
+    delete:
+      tags:
+        - "menu"
+      summary: "Delete Menu Role"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Role Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/products:
+    get:
+      tags:
+        - "menu"
+      summary: "Get Menu Products"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "include_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Dates"
+        - name: "include_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Ingredients"
+        - name: "include_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Roles"
+        - name: "include_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Variants"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetMenuProductsResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}/additional_cost:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Field Additional Cost"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuFieldAdditionalCostItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}/is_optional:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Field Is Optional"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuFieldIsOptionalItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}/max_sortable_elements:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Field Max Sortable Elements"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuFieldMaxSortableElementsItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/field/{menu_field_id}/name:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Field Name"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+        - name: "menu_field_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Field Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuFieldNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/name:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Name"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/price:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Price"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuPriceItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /menus/{menu_id}/short_name:
+    put:
+      tags:
+        - "menu"
+      summary: "Update Menu Short Name"
+      parameters:
+        - name: "menu_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Menu Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateMenuShortNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
 components:
   schemas:
     BaseResponse:
@@ -2385,3 +3356,344 @@ components:
       required:
         - "subcategory_id"
       title: "UpdateProductSubcategoryItem"
+    # Menus
+    MenuDate:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        start_date:
+          type: "string"
+          format: "date-time"
+          title: "Start Date"
+        end_date:
+          type: "string"
+          format: "date-time"
+          title: "End Date"
+      type: "object"
+      required:
+        - "id"
+        - "start_date"
+        - "end_date"
+      title: "MenuDate"
+    MenuField:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        max_sortable_elements:
+          type: "integer"
+          title: "Max Sortable Elements"
+        additional_cost:
+          type: "number"
+          title: "Additional Cost"
+        is_optional:
+          type: "boolean"
+          title: "Is Optional"
+        products:
+          items:
+            $ref: "#/components/schemas/MenuFieldProduct"
+          type: "array"
+          title: "Products"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "max_sortable_elements"
+        - "additional_cost"
+        - "is_optional"
+      title: "MenuField"
+    MenuFieldProduct:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        price:
+          type: "number"
+          title: "Price"
+        product:
+          $ref: "#/components/schemas/Product"
+      type: "object"
+      required:
+        - "id"
+        - "price"
+        - "product"
+      title: "MenuFieldProduct"
+    MenuRole:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        role_id:
+          type: "integer"
+          title: "Role Id"
+      type: "object"
+      required:
+        - "id"
+        - "role_id"
+      title: "MenuRole"
+    Menu:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        short_name:
+          type: "string"
+          title: "Short Name"
+        price:
+          type: "number"
+          title: "Price"
+        dates:
+          items:
+            $ref: "#/components/schemas/MenuDate"
+          type: "array"
+          title: "Dates"
+        fields:
+          items:
+            $ref: "#/components/schemas/MenuField"
+          type: "array"
+          title: "Fields"
+        roles:
+          items:
+            $ref: "#/components/schemas/MenuRole"
+          type: "array"
+          title: "Roles"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "short_name"
+        - "price"
+      title: "Menu"
+    AddMenuDateItem:
+      properties:
+        start_date:
+          type: "string"
+          format: "date-time"
+          title: "Start Date"
+        end_date:
+          type: "string"
+          format: "date-time"
+          title: "End Date"
+      type: "object"
+      required:
+        - "start_date"
+        - "end_date"
+      title: "AddMenuDateItem"
+    AddMenuDateResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            date:
+              $ref: "#/components/schemas/MenuDate"
+          required:
+            - "date"
+          title: "AddMenuDateResponse"
+    AddMenuFieldItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        max_sortable_elements:
+          type: "integer"
+          minimum: "1"
+          title: "Max Sortable Elements"
+        additional_cost:
+          type: "number"
+          minimum: "0"
+          title: "Additional Cost"
+      type: "object"
+      required:
+        - "name"
+        - "max_sortable_elements"
+        - "additional_cost"
+      title: "AddMenuFieldItem"
+    AddMenuFieldResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            field:
+              $ref: "#/components/schemas/MenuField"
+          required:
+            - "field"
+          title: "AddMenuFieldResponse"
+    AddMenuFieldProductItem:
+      properties:
+        product_id:
+          type: "integer"
+          title: "Product Id"
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+      type: "object"
+      required:
+        - "product_id"
+        - "price"
+      title: "AddMenuFieldProductItem"
+    AddMenuFieldProductResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            field_product:
+              $ref: "#/components/schemas/MenuFieldProduct"
+          required:
+            - "field_product"
+          title: "AddMenuFieldProductResponse"
+    AddMenuRoleItem:
+      properties:
+        role_id:
+          type: "integer"
+          title: "Role Id"
+      type: "object"
+      required:
+        - "role_id"
+      title: "AddMenuRoleItem"
+    AddMenuRoleResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            role:
+              "$ref": "#/components/schemas/MenuRole"
+          required:
+            - "role"
+          title: "AddMenuRoleResponse"
+    CreateMenuItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        short_name:
+          type: "string"
+          title: "Short Name"
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+      type: "object"
+      required:
+        - "name"
+        - "short_name"
+        - "price"
+      title: "CreateMenuItem"
+    CreateMenuResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            menu:
+              $ref: "#/components/schemas/Menu"
+          required:
+            - "menu"
+          title: "CreateMenuResponse"
+    GetMenuResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - $ref: "#/components/schemas/Menu"
+      title: "GetMenuResponse"
+    GetMenuProductsResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            products:
+              items:
+                $ref: "#/components/schemas/Product"
+              type: "array"
+              title: "Products"
+          required:
+            - "products"
+          title: "GetMenuProductsResponse"
+    GetMenusResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            total_count:
+              type: "integer"
+              title: "Total Count"
+            menus:
+              items:
+                "$ref": "#/components/schemas/Menu"
+              type: "array"
+              title: "Menus"
+          required:
+            - "total_count"
+            - "menus"
+          title: "GetMenusResponse"
+    UpdateMenuFieldAdditionalCostItem:
+      properties:
+        additional_cost:
+          type: "number"
+          minimum: "0"
+          title: "Additional Cost"
+      type: "object"
+      required:
+        - "additional_cost"
+      title: "UpdateMenuFieldAdditionalCostItem"
+    UpdateMenuFieldIsOptionalItem:
+      properties:
+        is_optional:
+          type: "boolean"
+          title: "Is Optional"
+      type: "object"
+      required:
+        - "is_optional"
+      title: "UpdateMenuFieldIsOptionalItem"
+    UpdateMenuFieldMaxSortableElementsItem:
+      properties:
+        max_sortable_elements:
+          type: "integer"
+          minimum: "1"
+          title: "Max Sortable Elements"
+      type: "object"
+      required:
+        - "max_sortable_elements"
+      title: "UpdateMenuFieldMaxSortableElementsItem"
+    UpdateMenuFieldNameItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+      title: "UpdateMenuFieldNameItem"
+    UpdateMenuNameItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+      title: "UpdateMenuNameItem"
+    UpdateMenuPriceItem:
+      properties:
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+      type: "object"
+      required:
+        - "price"
+      title: "UpdateMenuPriceItem"
+    UpdateMenuShortNameItem:
+      properties:
+        short_name:
+          type: "string"
+          title: "Short Name"
+      type: "object"
+      required:
+        - "short_name"
+      title: "UpdateMenuShortNameItem"
