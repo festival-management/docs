@@ -14,7 +14,7 @@ class Role(BaseModel):
 ```
 - **id**: l'identificativo univoco del ruolo. Ogni ruolo ha un id che lo distingue da altri ruoli nel sistema.
 - **name**: il nome del ruolo.
-- **permissions**: un dizionario che associa ad ogni permesso un valore booleano, che indica se il permesso è abilitato
+- **permissions**: un dizionario che associa a ogni permesso un valore booleano, che indica se il permesso è abilitato
   (True) o disabilitato (False) per il ruolo. I permessi definiscono quali operazioni un ruolo può o non può compiere 
   all'interno del sistema. I ruoli consentiti sono: `can_administer`, `can_order`, `can_statistics`, e 
   `can_priority_statistics`.
@@ -36,4 +36,4 @@ class Permission(StrEnum):
 - **can_statistics**: con questo permesso, un utente con un ruolo che possiede questo permesso portà vedere tutte le
   statistiche.
 - **can_priority_statistics**: con questo permesso, un utente con un ruolo che possiede questo permesso portà vedere le
-  statistiche dei prodotto che possiedono `is_priority` a True.
+  statistiche dei prodotti che possiedono `is_priority` a True.

@@ -37,5 +37,25 @@
             <toc-element topic="Update-Subcategory-Name.md"/>
             <toc-element topic="Update-Subcategory-Order.md"/>
         </toc-element>
+        <toc-element topic="Products.md">
+            <toc-element topic="Add-Product-Date.md"/>
+            <toc-element topic="Add-Product-Ingredient.md"/>
+            <toc-element topic="Add-Product-Role.md"/>
+            <toc-element topic="Add-Product-Variant.md"/>
+            <toc-element topic="Create-Product.md"/>
+            <toc-element topic="Delete-Product.md"/>
+            <toc-element topic="Delete-Product-Date.md"/>
+            <toc-element topic="Delete-Product-Ingredient.md"/>
+            <toc-element topic="Delete-Product-Role.md"/>
+            <toc-element topic="Delete-Product-Variant.md"/>
+            <toc-element topic="Get-Product.md"/>
+            <toc-element topic="Get-Products.md"/>
+            <toc-element topic="Update-Product-Category.md"/>
+            <toc-element topic="Update-Product-Is-Priority.md"/>
+            <toc-element topic="Update-Product-Name.md"/>
+            <toc-element topic="Update-Product-Price.md"/>
+            <toc-element topic="Update-Product-Short-Name.md"/>
+            <toc-element topic="Update-Product-Subcategory.md"/>
+        </toc-element>
     </toc-element>
 </instance-profile>

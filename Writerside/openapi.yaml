@@ -253,7 +253,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateRolePermissionsItem"
+              $ref: "#/components/schemas/UpdateRolePermissionsItem"
       responses:
         200:
           description: "Successful Response"
@@ -302,7 +302,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateRoleNameItem"
+              $ref: "#/components/schemas/UpdateRoleNameItem"
       responses:
         200:
           description: "Successful Response"
@@ -351,7 +351,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateRolePaperSizeItem"
+              $ref: "#/components/schemas/UpdateRolePaperSizeItem"
       responses:
         200:
           description: "Successful Response"
@@ -512,7 +512,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateUserPasswordItem"
+              $ref: "#/components/schemas/UpdateUserPasswordItem"
       responses:
         200:
           description: "Successful Response"
@@ -561,7 +561,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateUserNameItem"
+              $ref: "#/components/schemas/UpdateUserNameItem"
       responses:
         200:
           description: "Successful Response"
@@ -610,7 +610,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateUserRoleItem"
+              $ref: "#/components/schemas/UpdateUserRoleItem"
       responses:
         200:
           description: "Successful Response"
@@ -653,7 +653,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/CreateSubcategoryItem"
+              $ref: "#/components/schemas/CreateSubcategoryItem"
       responses:
         200:
           description: "Successful Response"
@@ -809,7 +809,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateSubcategoryNameItem"
+              $ref: "#/components/schemas/UpdateSubcategoryNameItem"
       responses:
         200:
           description: "Successful Response"
@@ -852,7 +852,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/UpdateSubcategoryOrderItem"
+              $ref: "#/components/schemas/UpdateSubcategoryOrderItem"
       responses:
         200:
           description: "Successful Response"
@@ -868,6 +868,796 @@ paths:
                 $ref: "#/components/schemas/BaseResponse"
         409:
           description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  # Products
+  /products/{product_id}/date:
+    post:
+      tags:
+        - "products"
+      summary: "Add Product Date"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddProductDateItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddProductDateResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/ingredient:
+    post:
+      tags:
+        - "products"
+      summary: "Add Product Ingredient"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddProductIngredientItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddProductIngredientResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/role:
+    post:
+      tags:
+        - "products"
+      summary: "Add Product Role"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddProductRoleItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddProductRoleResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/variant:
+    post:
+      tags:
+        - "products"
+      summary: "Add Product Variant"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddProductVariantItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddProductVariantResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/:
+    post:
+      tags:
+        - "products"
+      summary: "Create Product"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateProductResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "products"
+      summary: "Get Products"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "0"
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: "false"
+          schema:
+            anyOf:
+              - type: "integer"
+              - type: "null"
+            title: "Limit"
+        - name: "only_name"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Only Name"
+        - name: "order_by"
+          in: "query"
+          required: "false"
+          schema:
+            type: "string"
+            title: "Order By"
+        - name: "subcategory_id"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            title: "Subcategory Id"
+        - name: "include_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Dates"
+        - name: "include_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Ingredients"
+        - name: "include_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Roles"
+        - name: "include_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Variants"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetProductsResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}:
+    delete:
+      tags:
+        - "products"
+      summary: "Delete Product"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "products"
+      summary: "Get Product"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+        - name: "include_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Dates"
+        - name: "include_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Ingredients"
+        - name: "include_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Roles"
+        - name: "include_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Variants"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetProductResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/date/{product_date_id}:
+    delete:
+      tags:
+        - "products"
+      summary: "Delete Product Date"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+        - name: "product_date_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Date Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/ingredient/{product_ingredient_id}:
+    delete:
+      tags:
+        - "products"
+      summary: "Delete Product Ingredient"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+        - name: "product_ingredient_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Ingredient Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/role/{product_role_id}:
+    delete:
+      tags:
+        - "products"
+      summary: "Delete Product Role"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+        - name: "product_role_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Role Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/variant/{product_variant_id}:
+    delete:
+      tags:
+        - "products"
+      summary: "Delete Product Variant"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+        - name: "product_variant_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Variant Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/category:
+    put:
+      tags:
+        - "products"
+      summary: "Update Product Category"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductCategoryItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/priority:
+    put:
+      tags:
+        - "products"
+      summary: "Update Product Is Priority"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductIsPriorityItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/name:
+    put:
+      tags:
+        - "products"
+      summary: "Update Product Name"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/price:
+    put:
+      tags:
+        - "products"
+      summary: "Update Product Price"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductPriceItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/short_name:
+    put:
+      tags:
+        - "products"
+      summary: "Update Product Short Name"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductShortNameItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /products/{product_id}/subcategory:
+    put:
+      tags:
+        - "products"
+      summary: "Update Product Subcategory"
+      parameters:
+        - name: "product_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Product Id"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductSubcategoryItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
           content:
             application/json:
               schema:
@@ -902,6 +1692,12 @@ components:
         - "A4"
       const: "A4"
       title: "PaperSize"
+    Category:
+      type: "string"
+      enum:
+        - "food"
+        - "drink"
+      title: "Category"
     User:
       properties:
         id:
@@ -918,7 +1714,7 @@ components:
           format: "date-time"
           title: "Created At"
       type: "object"
-      "required":
+      required:
         - "id"
         - "username"
         - "role_id"
@@ -1101,7 +1897,7 @@ components:
     UpdateRolePaperSizeItem:
       properties:
         paper_size:
-          "$ref": "#/components/schemas/PaperSize"
+          $ref: "#/components/schemas/PaperSize"
       type: "object"
       required:
         - "paper_size"
@@ -1121,7 +1917,7 @@ components:
               title: "Total Count"
             users:
               items:
-                "$ref": "#/components/schemas/User"
+                $ref: "#/components/schemas/User"
               type: "array"
               title: "Users"
           required:
@@ -1201,7 +1997,7 @@ components:
         - type: "object"
           properties:
             subcategory:
-              "$ref": "#/components/schemas/Subcategory"
+              $ref: "#/components/schemas/Subcategory"
           required:
             - "subcategory"
           title: "CreateSubcategoryResponse"
@@ -1216,8 +2012,8 @@ components:
             subcategories:
               items:
                 anyOf:
-                  - "$ref": "#/components/schemas/Subcategory"
-                  - "$ref": "#/components/schemas/SubcategoryName"
+                  - $ref: "#/components/schemas/Subcategory"
+                  - $ref: "#/components/schemas/SubcategoryName"
               type: "array"
               title: "Subcategories"
           required:
@@ -1248,3 +2044,344 @@ components:
       required:
         - "order"
       title: "UpdateSubcategoryOrderItem"
+    #Products
+    ProductDate:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        start_date:
+          type: "string"
+          format: "date-time"
+          title: "Start Date"
+        end_date:
+          type: "string"
+          format: "date-time"
+          title: "End Date"
+      type: "object"
+      required:
+        - "id"
+        - "start_date"
+        - "end_date"
+      title: "ProductDate"
+    ProductIngredient:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        price:
+          type: "number"
+          title: "Price"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "price"
+      title: "ProductIngredient"
+    ProductRole:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        role_id:
+          type: "integer"
+          title: "Role Id"
+      type: "object"
+      required:
+        - "id"
+        - "role_id"
+      title: "ProductRole"
+    ProductVariant:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        price:
+          type: "number"
+          title: "Price"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "price"
+      title: "ProductVariant"
+    Product:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        short_name:
+          type: "string"
+          title: "Short Name"
+        is_priority:
+          type: "boolean"
+          title: "Is Priority"
+        price:
+          type: "number"
+          title: "Price"
+        category:
+          $ref: "#/components/schemas/Category"
+        subcategory_id:
+          type: "integer"
+          title: "Subcategory Id"
+        dates:
+          items:
+            $ref: "#/components/schemas/ProductDate"
+          type: "array"
+          title: "Dates"
+        ingredients:
+          items:
+            $ref: "#/components/schemas/ProductIngredient"
+          type: "array"
+          title: "Ingredients"
+        roles:
+          items:
+            $ref: "#/components/schemas/ProductRole"
+          type: "array"
+          title: "Roles"
+        variants:
+          items:
+            $ref: "#/components/schemas/ProductVariant"
+          type: "array"
+          title: "Variants"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "short_name"
+        - "is_priority"
+        - "price"
+        - "category"
+        - "subcategory_id"
+      title: "Product"
+    ProductName:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        name:
+          type: "string"
+          title: "Name"
+        short_name:
+          type: "string"
+          title: "Short Name"
+      type: "object"
+      required:
+        - "id"
+        - "name"
+        - "short_name"
+      title: "ProductName"
+    AddProductDateItem:
+      properties:
+        start_date:
+          type: "string"
+          format: "date-time"
+          title: "Start Date"
+        end_date:
+          type: "string"
+          format: "date-time"
+          title: "End Date"
+      type: "object"
+      required:
+        - "start_date"
+        - "end_date"
+      title: "AddProductDateItem"
+    AddProductDateResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            date:
+              $ref: "#/components/schemas/ProductDate"
+          required:
+            - "date"
+          title: "AddProductDateResponse"
+    AddProductIngredientItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+      type: "object"
+      required:
+        - "name"
+        - "price"
+      title: "AddProductIngredientItem"
+    AddProductIngredientResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            ingredient:
+              $ref: "#/components/schemas/ProductIngredient"
+          required:
+            - "ingredient"
+          title: "AddProductIngredientResponse"
+    AddProductRoleItem:
+      properties:
+        role_id:
+          type: "integer"
+          title: "Role Id"
+      type: "object"
+      required:
+        - "role_id"
+      title: "AddProductRoleItem"
+    AddProductRoleResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            role:
+              $ref: "#/components/schemas/ProductRole"
+          required:
+            - "role"
+          title: "AddProductRoleResponse"
+    AddProductVariantItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+      type: "object"
+      required:
+        - "name"
+        - "price"
+      title: "AddProductVariantItem"
+    AddProductVariantResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            variant:
+              $ref: "#/components/schemas/ProductVariant"
+          required:
+            - "variant"
+          title: "AddProductVariantResponse"
+    CreateProductItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        short_name:
+          type: "string"
+          title: "Short Name"
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+        category:
+          $ref: "#/components/schemas/Category"
+        subcategory_id:
+          type: "integer"
+          title: "Subcategory Id"
+      type: "object"
+      required:
+        - "name"
+        - "short_name"
+        - "price"
+        - "category"
+        - "subcategory_id"
+      title: "CreateProductItem"
+    CreateProductResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            product:
+              $ref: "#/components/schemas/Product"
+          required:
+            - "product"
+          title: "CreateProductResponse"
+    GetProductResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - $ref: "#/components/schemas/Product"
+      title: "GetProductResponse"
+    GetProductsResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            total_count:
+              type: "integer"
+              title: "Total Count"
+            products:
+              items:
+                anyOf:
+                  - $ref: "#/components/schemas/Product"
+                  - $ref: "#/components/schemas/ProductName"
+              type: "array"
+              title: "Products"
+          required:
+            - "total_count"
+            - "products"
+          title: "GetProductsResponse"
+    UpdateProductCategoryItem:
+      properties:
+        category:
+          $ref: "#/components/schemas/Category"
+      type: "object"
+      required:
+        - "category"
+      title: "UpdateProductCategoryItem"
+    UpdateProductIsPriorityItem:
+      properties:
+        is_priority:
+          type: "boolean"
+          title: "Is Priority"
+      type: "object"
+      required:
+        - "is_priority"
+      title: "UpdateProductIsPriorityItem"
+    UpdateProductNameItem:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+        - "name"
+      title: "UpdateProductNameItem"
+    UpdateProductPriceItem:
+      properties:
+        price:
+          type: "number"
+          minimum: "0"
+          title: "Price"
+      type: "object"
+      required:
+        - "price"
+      title: "UpdateProductPriceItem"
+    UpdateProductShortNameItem:
+      properties:
+        short_name:
+          type: "string"
+          title: "Short Name"
+      type: "object"
+      required:
+        - "short_name"
+      title: "UpdateProductShortNameItem"
+    UpdateProductSubcategoryItem:
+      properties:
+        subcategory_id:
+          type: "integer"
+          title: "Subcategory Id"
+      type: "object"
+      required:
+        - "subcategory_id"
+      title: "UpdateProductSubcategoryItem"
