@@ -2639,6 +2639,461 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BaseResponse"
+  # Orders
+  /orders/:
+    post:
+      tags:
+        - "orders"
+      summary: "Create Order"
+      requestBody:
+        required: "true"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrderItem"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrderResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "orders"
+      summary: "Get Orders"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: "false"
+          schema:
+            type: "integer"
+            default: "0"
+            title: "Offset"
+        - name: "limit"
+          in: "query"
+          required: "false"
+          schema:
+            anyOf:
+              - type: "integer"
+              - type: "null"
+            title: "Limit"
+        - name: "order_by"
+          in: "query"
+          required: "false"
+          schema:
+            type: "string"
+            title: "Order By"
+        - name: "include_menus"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus"
+        - name: "include_menus_menu"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu"
+        - name: "include_menus_menu_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Dates"
+        - name: "include_menus_menu_fields"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields"
+        - name: "include_menus_menu_fields_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products"
+        - name: "include_menus_menu_fields_products_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Dates"
+        - name: "include_menus_menu_fields_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Ingredients"
+        - name: "include_menus_menu_fields_products_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Roles"
+        - name: "include_menus_menu_fields_products_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Variants"
+        - name: "include_menus_menu_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Roles"
+        - name: "include_menus_fields"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Fields"
+        - name: "include_menus_fields_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Fields Products"
+        - name: "include_menus_fields_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Fields Products Ingredients"
+        - name: "include_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products"
+        - name: "include_products_product"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product"
+        - name: "include_products_product_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Dates"
+        - name: "include_products_product_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Ingredients"
+        - name: "include_products_product_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Roles"
+        - name: "include_products_product_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Variants"
+        - name: "include_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Ingredients"
+        - name: "include_user"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include User"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOrdersResponse"
+        400:
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+  /orders/{order_id}:
+    delete:
+      tags:
+        - "orders"
+      summary: "Delete Order"
+      parameters:
+        - name: "order_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Order Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+    get:
+      tags:
+        - "orders"
+      summary: "Get Order"
+      parameters:
+        - name: "order_id"
+          in: "path"
+          required: "true"
+          schema:
+            type: "integer"
+            title: "Order Id"
+        - name: "include_menus"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus"
+        - name: "include_menus_menu"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu"
+        - name: "include_menus_menu_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Dates"
+        - name: "include_menus_menu_fields"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields"
+        - name: "include_menus_menu_fields_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products"
+        - name: "include_menus_menu_fields_products_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Dates"
+        - name: "include_menus_menu_fields_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Ingredients"
+        - name: "include_menus_menu_fields_products_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Roles"
+        - name: "include_menus_menu_fields_products_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Fields Products Variants"
+        - name: "include_menus_menu_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Menu Roles"
+        - name: "include_menus_fields"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Fields"
+        - name: "include_menus_fields_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Fields Products"
+        - name: "include_menus_fields_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Menus Fields Products Ingredients"
+        - name: "include_products"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products"
+        - name: "include_products_product"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product"
+        - name: "include_products_product_dates"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Dates"
+        - name: "include_products_product_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Ingredients"
+        - name: "include_products_product_roles"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Roles"
+        - name: "include_products_product_variants"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Product Variants"
+        - name: "include_products_ingredients"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include Products Ingredients"
+        - name: "include_user"
+          in: "query"
+          required: "false"
+          schema:
+            type: "boolean"
+            default: "false"
+            title: "Include User"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOrderResponse"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        404:
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponse"
 components:
   schemas:
     BaseResponse:
@@ -3564,7 +4019,7 @@ components:
         - type: "object"
           properties:
             role:
-              "$ref": "#/components/schemas/MenuRole"
+              $ref: "#/components/schemas/MenuRole"
           required:
             - "role"
           title: "AddMenuRoleResponse"
@@ -3624,7 +4079,7 @@ components:
               title: "Total Count"
             menus:
               items:
-                "$ref": "#/components/schemas/Menu"
+                $ref: "#/components/schemas/Menu"
               type: "array"
               title: "Menus"
           required:
@@ -3697,3 +4152,301 @@ components:
       required:
         - "short_name"
       title: "UpdateMenuShortNameItem"
+    # Orders
+    OrderProductIngredient:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        product_ingredient_id:
+          type: "integer"
+          title: "Product Ingredient Id"
+        quantity:
+          type: "integer"
+          title: "Quantity"
+      type: "object"
+      required:
+        - "id"
+        - "product_ingredient_id"
+        - "quantity"
+      title: "OrderProductIngredient"
+    OrderProduct:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        product_id:
+          type: "integer"
+          title: "Product Id"
+        price:
+          type: "number"
+          title: "Price"
+        quantity:
+          type: "integer"
+          title: "Quantity"
+        variant_id:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Variant Id"
+        order_menu_field_id:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Order Menu Field Id"
+        product:
+          anyOf:
+            - $ref: "#/components/schemas/Product"
+            - type: "null"
+        ingredients:
+          items:
+            $ref: "#/components/schemas/OrderProductIngredient"
+          type: "array"
+          default: "[ ]"
+          title: "Ingredients"
+      type: "object"
+      required:
+        - "id"
+        - "product_id"
+        - "price"
+        - "quantity"
+      title: "OrderProduct"
+    OrderMenuField:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        menu_field_id:
+          type: "integer"
+          title: "Menu Field Id"
+        products:
+          items:
+            $ref: "#/components/schemas/OrderProduct"
+          type: "array"
+          default: "[ ]"
+          title: "Products"
+      type: "object"
+      required:
+        - "id"
+        - "menu_field_id"
+      title: "OrderMenuField"
+    OrderMenu:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        price:
+          type: "number"
+          title: "Price"
+        quantity:
+          type: "integer"
+          title: "Quantity"
+        menu:
+          anyOf:
+            - $ref: "#/components/schemas/Menu"
+            - type: "null"
+        fields:
+          items:
+            $ref: "#/components/schemas/OrderMenuField"
+          type: "array"
+          default: "[ ]"
+          title: "Fields"
+      type: "object"
+      required:
+        - "id"
+        - "price"
+        - "quantity"
+      title: "OrderMenu"
+    Order:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+        customer:
+          type: "string"
+          title: "Customer"
+        guests:
+          anyOf:
+            - type: "integer"
+              minimum: "1"
+            - type: "null"
+          title: "Guests"
+        is_take_away:
+          type: "boolean"
+          title: "Is Take Away"
+        table:
+          anyOf:
+            - type: "integer"
+              minimum: "1"
+            - type: "null"
+          title: "Table"
+        user:
+          anyOf:
+            - $ref: "#/components/schemas/User"
+            - type: "null"
+        menus:
+          items:
+            $ref: "#/components/schemas/OrderMenu"
+          type: "array"
+          default: "[ ]"
+          title: "Menus"
+        products:
+          items:
+            $ref: "#/components/schemas/OrderProduct"
+          type: "array"
+          default: "[ ]"
+          title: "Products"
+        created_at:
+          type: "string"
+          format: "date-time"
+          title: "Created At"
+      type: "object"
+      required:
+        - "id"
+        - "customer"
+        - "is_take_away"
+        - "created_at"
+      title: "Order"
+    CreateOrderProductIngredientItem:
+      properties:
+        ingredient_id:
+          type: "integer"
+          title: "Ingredient Id"
+        quantity:
+          type: "integer"
+          minimum: "1"
+          title: "Quantity"
+      type: "object"
+      required:
+        - "ingredient_id"
+        - "quantity"
+      title: "CreateOrderProductIngredientItem"
+    CreateOrderProductItem:
+      properties:
+        product_id:
+          type: "integer"
+          title: "Product Id"
+        variant_id:
+          anyOf:
+            - type: "integer"
+            - type: "null"
+          title: "Variant Id"
+        ingredients:
+          items:
+            $ref: "#/components/schemas/CreateOrderProductIngredientItem"
+          type: "array"
+          title: "Ingredients"
+          default: "[ ]"
+        quantity:
+          type: "integer"
+          minimum: "1"
+          title: "Quantity"
+      type: "object"
+      required:
+        - "product_id"
+        - "quantity"
+      title: "CreateOrderProductItem"
+    CreateOrderMenuFieldItem:
+      properties:
+        menu_field_id:
+          type: "integer"
+          title: "Menu Field Id"
+        products:
+          items:
+            $ref: "#/components/schemas/CreateOrderProductItem"
+          type: "array"
+          title: "Products"
+      type: "object"
+      required:
+        - "menu_field_id"
+        - "products"
+      title: "CreateOrderMenuFieldItem"
+    CreateOrderMenuItem:
+      properties:
+        menu_id:
+          type: "integer"
+          title: "Menu Id"
+        fields:
+          items:
+            $ref: "#/components/schemas/CreateOrderMenuFieldItem"
+          type: "array"
+          title: "Fields"
+        quantity:
+          type: "integer"
+          minimum: "1"
+          title: "Quantity"
+      type: "object"
+      required:
+        - "menu_id"
+        - "fields"
+        - "quantity"
+      title: "CreateOrderMenuItem"
+    CreateOrderItem:
+      properties:
+        customer:
+          type: "string"
+          title: "Customer"
+        guests:
+          anyOf:
+            - type: "integer"
+              minimum: "1"
+            - type: "null"
+          title: "Guests"
+        is_take_away:
+          type: "boolean"
+          title: "Is Take Away"
+        table:
+          anyOf:
+            - type: "integer"
+              minimum: "1"
+            - type: "null"
+          title: "Table"
+        products:
+          items:
+            $ref: "#/components/schemas/CreateOrderProductItem"
+          type: "array"
+          title: "Products"
+          default: "[ ]"
+        menus:
+          items:
+            $ref: "#/components/schemas/CreateOrderMenuItem"
+          type: "array"
+          title: "Menus"
+          default: "[ ]"
+      type: "object"
+      required:
+        - "customer"
+        - "is_take_away"
+      title: "CreateOrderItem"
+    CreateOrderResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            order:
+              $ref: "#/components/schemas/Order"
+          required:
+            - "order"
+          title: "CreateOrderResponse"
+    GetOrderResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - $ref: "#/components/schemas/Order"
+      title: "GetOrderResponse"
+    GetOrdersResponse:
+      allOf:
+        - $ref: "#/components/schemas/BaseResponse"
+        - type: "object"
+          properties:
+            total_count:
+              type: "integer"
+              title: "Total Count"
+            orders:
+              items:
+                $ref: "#/components/schemas/Order"
+              type: "array"
+              title: "Orders"
+          required:
+            - "total_count"
+            - "orders"
+          title: "GetOrdersResponse"

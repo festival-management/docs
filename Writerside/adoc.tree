@@ -80,5 +80,11 @@
             <toc-element topic="Update-Menu-Price.md"/>
             <toc-element topic="Update-Menu-Short-Name.md"/>
         </toc-element>
+        <toc-element topic="Orders.md">
+            <toc-element topic="Create-order.md"/>
+            <toc-element topic="Delete-Order.md"/>
+            <toc-element topic="Get-Order.md"/>
+            <toc-element topic="Get-Orders.md"/>
+        </toc-element>
     </toc-element>
 </instance-profile>

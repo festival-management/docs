@@ -114,4 +114,8 @@
         <description>Created after removal of "API Reference" from API Docs</description>
         <accepts>API_Reference.html</accepts>
     </rule>
+    <rule id="5266820d">
+        <description>Created after removal of "Create Order" from API Docs</description>
+        <accepts>Create-Order.html</accepts>
+    </rule>
 </rules>
